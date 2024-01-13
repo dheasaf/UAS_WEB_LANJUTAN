@@ -22,12 +22,12 @@
             </div>
             <div class="form-group">
               <label for="id_kategori">Kategori Barang</label>
-							<select name="id_kategori" id="id_kategori" class="custom-select">
-								<option value="" selected disabled hidden>-- Pilih Kategori --</option>
-								@foreach ($kategori as $row)
-									<option value="{{ $row->id }}" {{ isset($barang) ? ($barang->id_kategori == $row->id ? 'selected' : '') : '' }}>{{ $row->nama }}</option>
-								@endforeach
-							</select>
+              <select name="id_kategori" id="id_kategori" class="custom-select">
+                <option value="" selected disabled hidden>-- Pilih Kategori --</option>
+                @foreach ($kategori as $row)
+                  <option value="{{ $row->id }}" {{ isset($barang) ? ($barang->id_kategori == $row->id ? 'selected' : '') : '' }}>{{ $row->nama }}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="harga">Harga Barang</label>
@@ -37,6 +37,11 @@
               <label for="jumlah">Jumlah Barang</label>
               <input type="number" class="form-control" id="jumlah" name="jumlah" value="{{ isset($barang) ? $barang->jumlah : '' }}">
             </div>
+
+            <!-- Detail Button -->
+            @if(isset($barang))
+              <a href="{{ route('barang.detail', $barang->id) }}" class="btn btn-info">Detail</a>
+            @endif
           </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Simpan</button>

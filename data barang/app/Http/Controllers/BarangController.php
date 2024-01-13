@@ -66,4 +66,11 @@ class BarangController extends Controller
 
 		return redirect()->route('barang');
 	}
+
+    public function detail($id)
+    {
+        $barang = Barang::findOrFail($id);
+
+        return view('barang.detail', ['barang' => $barang]);
+    }
 }

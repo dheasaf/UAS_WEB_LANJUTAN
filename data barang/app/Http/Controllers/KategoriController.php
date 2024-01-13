@@ -13,7 +13,8 @@ class KategoriController extends Controller
 
 		return view('kategori/index', ['kategori' => $kategori]);
 	}
-    public function tambah()
+
+	public function tambah()
 	{
 		return view('kategori.form');
 	}
@@ -38,17 +39,4 @@ class KategoriController extends Controller
 
 		return redirect()->route('kategori');
 	}
-    public function hapus($id)
-    {
-        $kategori = Kategori::find($id);
-
-        if (!$kategori) {
-            // Tampilkan pesan atau redirect jika kategori tidak ditemukan
-            return redirect()->route('kategori')->with('error', 'Kategori tidak ditemukan');
-        }
-
-        $kategori->delete();
-
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil dihapus');
-    }
 }
